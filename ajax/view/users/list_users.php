@@ -23,7 +23,6 @@
 
 
 
-
 <div id="myModal" class="modal">
 
     <div class="modal-content">
@@ -36,35 +35,36 @@
 </div>
 
 
-
-
-
-<p>Suggestions: <span id="txtHint"></span></p>
-
-<p>First name: <input type="text" id="txt1" onkeyup="showHint(this.value)"></p>
-
-
-
 <script>
-    function showHint(str) {
-        var xhttp;
-        if (str.length == 0) {
+    function showUser(str) {
+        if (str == "") {
             document.getElementById("txtHint").innerHTML = "";
             return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET","index.php?action=fetch.php?q="+str,true);
+            xmlhttp.send();
         }
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "index.php?action:fetch.php?q="+str, true);
-        xhttp.send();
     }
 
 </script>
 
-<table class="table table-bordered">
+
+
+
+<p>Search: <input name="users" type="text" id="users" onchange="showUser(this.value)"></p>
+
+
+<div id="txtHint"><b>Person info will be listed here...</b></div>
+
+
+
+<table  class="table table-bordered">
     <tr>
         <th style="width: 10px">#</th>
         <th>Name</th>
@@ -144,7 +144,6 @@
 </table>
 
 </body>
-<script type="text/javascript" src="action.js"></script>
 
 <script type="text/javascript" src="webroot/js/modal.js"></script>
 

@@ -1,37 +1,30 @@
+
+
 <?php
-// Array with names
+$q = intval($_GET['q']);
 
-//open connection to mysql db
-$connection = mysqli_connect("localhost", "root", "", "helloWorld1") or die("Error " . mysqli_error($connection));
-
-//fetch table rows from mysql db
-$sql = "select * from users";
-$result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
-
-//create an array
-$emparray = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $emparray[] = $row;
-}
- echo json_encode($emparray);
-
-
-$hint = "";
-
-// lookup all hints from array if $q is different from ""
-if ($row !== "") {
-    $row = strtolower($row);
-    foreach(array_keys($emparray) as $name) {
-        if (stristr($row, substr($name, 0))) {
-            if ($hint === "") {
-                $hint = $name;
-            } else {
-                $hint .= ", $name";
-            }
-        }
-    }
+$con = mysqli_connect('localhost','root','','helloWorld1');
+if (!$con) {
+    die('Could not connect: ' . mysqli_error($con));
 }
 
-// Output "no suggestion" if no hint was found or output correct values
-echo $hint === "" ? "no suggestion" : $hint;
+mysqli_select_db($con,"helloWorld1");
+$sql="SELECT * FROM users WHERE id = '".$q."'";
+$result = mysqli_query($con,$sql);
+
+echo "<table>
+<tr>
+<th>Name</th>
+<th>birthday</th>
+
+</tr>";
+while($row = mysqli_fetch_array($result)) {
+    echo "<tr>";
+    echo "<td>" . $row['name'] . "</td>";
+    echo "<td>" . $row['birthday'] . "</td>";
+
+    echo "</tr>";
+}
+echo "</table>";
+mysqli_close($con);
 ?>
