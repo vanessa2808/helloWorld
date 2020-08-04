@@ -5,9 +5,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="webroot/css/modal.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 
 
 
@@ -20,7 +18,6 @@
 <br/>
 
 <br/>
-
 
 
 <div id="myModal" class="modal">
@@ -37,7 +34,7 @@
 
 <script>
     function showUser(str) {
-        if (str == "") {
+        if (str.length == "") {
             document.getElementById("txtHint").innerHTML = "";
             return;
         } else {
@@ -47,7 +44,7 @@
                     document.getElementById("txtHint").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET","index.php?action=fetch.php?q="+str,true);
+            xmlhttp.open("GET","index.php?action=fetch.php&query="+str,true);
             xmlhttp.send();
         }
     }
@@ -56,15 +53,16 @@
 
 
 
+<form action="">
 
-<p>Search: <input name="users" type="text" id="users" onchange="showUser(this.value)"></p>
-
-
-<div id="txtHint"><b>Person info will be listed here...</b></div>
+<p>Search: <input name="users" type="text" id="users" onkeyup="showUser(this.value)"></p>
 
 
+</form>
 
-<table  class="table table-bordered">
+<div><b>Person info will be listed here...</b></div>
+
+<table id="txtHint" class="table table-bordered">
     <tr>
         <th style="width: 10px">#</th>
         <th>Name</th>
@@ -146,6 +144,8 @@
 </body>
 
 <script type="text/javascript" src="webroot/js/modal.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 
 </html>

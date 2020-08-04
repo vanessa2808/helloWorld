@@ -21,6 +21,10 @@
                 else
                     return $connect;
 
+                $sql="SELECT * FROM users WHERE name = '".$q."'";
+
+
+
             }
 
 
