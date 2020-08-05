@@ -61,7 +61,7 @@ while($row = mysqli_fetch_array($result)) {
 
                                         <a href=\"index.php?action=delete_users&id=<?php echo ?>\"
                                            class=\"btn btn-danger\">Delete</a>
-                                        <a hregitf=\"index.php?action=list_users\" class=\"btn btn-success \">Back</a>
+                                        <a href=\"index.php?action=list_users\" class=\"btn btn-success \">Back</a>
 
                                     </p>
                                 </div>

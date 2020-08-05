@@ -32,24 +32,7 @@
 </div>
 
 
-<script>
-    function showUser(str) {
-        if (str.length == "") {
-            document.getElementById("txtHint").innerHTML = "";
-            return;
-        } else {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("txtHint").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET","index.php?action=fetch.php&query="+str,true);
-            xmlhttp.send();
-        }
-    }
 
-</script>
 
 
 
@@ -144,6 +127,8 @@
 </body>
 
 <script type="text/javascript" src="webroot/js/modal.js"></script>
+<script type="text/javascript" src="view/users/js/action.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
