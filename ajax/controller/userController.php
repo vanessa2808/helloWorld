@@ -32,6 +32,8 @@ class userController {
                     }
                 }
                 include 'view/users/add_users.php';
+                include 'view/users/js/add.php';
+
                 break;
             case 'edit_users':
                 $id = $_GET['id'];

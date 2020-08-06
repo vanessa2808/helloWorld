@@ -101,7 +101,7 @@
                                     <p style="height: 100px; position: center;margin-top: 60px; padding-left: 200px">
 
 
-                                        <a href="index.php?action=delete_users&id=<?php echo $id ?>"
+                                        <a id="delete" href="index.php?action=delete_users&id=<?php echo $id ?>"
                                            class="btn btn-danger">Delete</a>
                                         <a href="index.php?action=list_users" class="btn btn-success ">Back</a>
 

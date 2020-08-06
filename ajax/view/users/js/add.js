@@ -4,7 +4,7 @@ $(document).ready(function() {
         var name = $('#name').val();
         var birthday = $('#birthday').val();
         $.ajax({
-            url: 'index.php?action=userModel.php',
+            url: 'index.php?action=add_users.php',
             type: 'POST',
             data: {
                 'save': 1,
